@@ -43,6 +43,10 @@
             txtCalories = new TextBox();
             lblCuisine = new Label();
             txtCuisineName = new TextBox();
+            lblStaffFirstName = new Label();
+            txtStaffFirstName = new TextBox();
+            lblStaffLastName = new Label();
+            txtStaffLastName = new TextBox();
             tblMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,10 +69,14 @@
             tblMain.Controls.Add(txtCalories, 1, 2);
             tblMain.Controls.Add(lblCuisine, 0, 1);
             tblMain.Controls.Add(txtCuisineName, 1, 1);
+            tblMain.Controls.Add(lblStaffFirstName, 0, 7);
+            tblMain.Controls.Add(txtStaffFirstName, 1, 7);
+            tblMain.Controls.Add(lblStaffLastName, 0, 8);
+            tblMain.Controls.Add(txtStaffLastName, 1, 8);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
-            tblMain.RowCount = 7;
+            tblMain.RowCount = 9;
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
@@ -76,7 +84,9 @@
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tblMain.Size = new Size(775, 284);
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tblMain.Size = new Size(801, 416);
             tblMain.TabIndex = 0;
             // 
             // lblRecipeName
@@ -92,16 +102,16 @@
             // txtRecipeName
             // 
             txtRecipeName.Dock = DockStyle.Fill;
-            txtRecipeName.Location = new Point(144, 3);
+            txtRecipeName.Location = new Point(159, 3);
             txtRecipeName.Name = "txtRecipeName";
-            txtRecipeName.Size = new Size(628, 34);
+            txtRecipeName.Size = new Size(639, 34);
             txtRecipeName.TabIndex = 7;
             // 
             // lblRecipeStatus
             // 
             lblRecipeStatus.Anchor = AnchorStyles.Left;
             lblRecipeStatus.AutoSize = true;
-            lblRecipeStatus.Location = new Point(3, 248);
+            lblRecipeStatus.Location = new Point(3, 246);
             lblRecipeStatus.Name = "lblRecipeStatus";
             lblRecipeStatus.Size = new Size(127, 28);
             lblRecipeStatus.TabIndex = 5;
@@ -110,9 +120,9 @@
             // txtRecipeStatus
             // 
             txtRecipeStatus.Dock = DockStyle.Fill;
-            txtRecipeStatus.Location = new Point(144, 243);
+            txtRecipeStatus.Location = new Point(159, 243);
             txtRecipeStatus.Name = "txtRecipeStatus";
-            txtRecipeStatus.Size = new Size(628, 34);
+            txtRecipeStatus.Size = new Size(639, 34);
             txtRecipeStatus.TabIndex = 12;
             // 
             // lblArchivedDate
@@ -128,17 +138,17 @@
             // txtArchivedDate
             // 
             txtArchivedDate.Dock = DockStyle.Fill;
-            txtArchivedDate.Location = new Point(144, 203);
+            txtArchivedDate.Location = new Point(159, 203);
             txtArchivedDate.Name = "txtArchivedDate";
-            txtArchivedDate.Size = new Size(628, 34);
+            txtArchivedDate.Size = new Size(639, 34);
             txtArchivedDate.TabIndex = 11;
             // 
             // txtPublishDate
             // 
             txtPublishDate.Dock = DockStyle.Fill;
-            txtPublishDate.Location = new Point(144, 163);
+            txtPublishDate.Location = new Point(159, 163);
             txtPublishDate.Name = "txtPublishDate";
-            txtPublishDate.Size = new Size(628, 34);
+            txtPublishDate.Size = new Size(639, 34);
             txtPublishDate.TabIndex = 10;
             // 
             // lblPublishDate
@@ -154,9 +164,9 @@
             // txtDraftDate
             // 
             txtDraftDate.Dock = DockStyle.Fill;
-            txtDraftDate.Location = new Point(144, 123);
+            txtDraftDate.Location = new Point(159, 123);
             txtDraftDate.Name = "txtDraftDate";
-            txtDraftDate.Size = new Size(628, 34);
+            txtDraftDate.Size = new Size(639, 34);
             txtDraftDate.TabIndex = 9;
             // 
             // lblDraftDate
@@ -182,9 +192,9 @@
             // txtCalories
             // 
             txtCalories.Dock = DockStyle.Fill;
-            txtCalories.Location = new Point(144, 83);
+            txtCalories.Location = new Point(159, 83);
             txtCalories.Name = "txtCalories";
-            txtCalories.Size = new Size(628, 34);
+            txtCalories.Size = new Size(639, 34);
             txtCalories.TabIndex = 8;
             // 
             // lblCuisine
@@ -200,16 +210,52 @@
             // txtCuisineName
             // 
             txtCuisineName.Dock = DockStyle.Fill;
-            txtCuisineName.Location = new Point(144, 43);
+            txtCuisineName.Location = new Point(159, 43);
             txtCuisineName.Name = "txtCuisineName";
-            txtCuisineName.Size = new Size(628, 34);
+            txtCuisineName.Size = new Size(639, 34);
             txtCuisineName.TabIndex = 15;
+            // 
+            // lblStaffFirstName
+            // 
+            lblStaffFirstName.Anchor = AnchorStyles.Left;
+            lblStaffFirstName.AutoSize = true;
+            lblStaffFirstName.Location = new Point(3, 286);
+            lblStaffFirstName.Name = "lblStaffFirstName";
+            lblStaffFirstName.Size = new Size(150, 28);
+            lblStaffFirstName.TabIndex = 16;
+            lblStaffFirstName.Text = "Staff First Name";
+            // 
+            // txtStaffFirstName
+            // 
+            txtStaffFirstName.Dock = DockStyle.Fill;
+            txtStaffFirstName.Location = new Point(159, 283);
+            txtStaffFirstName.Name = "txtStaffFirstName";
+            txtStaffFirstName.Size = new Size(639, 34);
+            txtStaffFirstName.TabIndex = 17;
+            // 
+            // lblStaffLastName
+            // 
+            lblStaffLastName.Anchor = AnchorStyles.Left;
+            lblStaffLastName.AutoSize = true;
+            lblStaffLastName.Location = new Point(3, 354);
+            lblStaffLastName.Name = "lblStaffLastName";
+            lblStaffLastName.Size = new Size(147, 28);
+            lblStaffLastName.TabIndex = 18;
+            lblStaffLastName.Text = "Staff Last Name";
+            // 
+            // txtStaffLastName
+            // 
+            txtStaffLastName.Dock = DockStyle.Fill;
+            txtStaffLastName.Location = new Point(159, 323);
+            txtStaffLastName.Name = "txtStaffLastName";
+            txtStaffLastName.Size = new Size(639, 34);
+            txtStaffLastName.TabIndex = 19;
             // 
             // frmRecipe
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(775, 284);
+            ClientSize = new Size(801, 416);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
@@ -237,5 +283,9 @@
         private TextBox txtRecipeStatus;
         private Label lblCuisine;
         private TextBox txtCuisineName;
+        private Label lblStaffFirstName;
+        private TextBox txtStaffFirstName;
+        private Label lblStaffLastName;
+        private TextBox txtStaffLastName;
     }
 }

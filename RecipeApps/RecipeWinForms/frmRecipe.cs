@@ -11,7 +11,7 @@ namespace RecipeWinForms
         }
         public void Showform(int RecipeId)
         {
-            string sql = "select r.*, c.CuisineName from Recipe r join Cuisine c on r.CuisineID = c.CuisineID where r.RecipeId = " + RecipeId.ToString();
+            string sql = "select r.*, c.CuisineName, s.FirstName, s.LastName from Recipe r join Cuisine c on r.CuisineID = c.CuisineID join Staff s on r.StaffID = s.StaffID where r.RecipeId = " + RecipeId.ToString();
             DataTable dt = SQLUtility.GetDataTable(sql);
             txtRecipeName.DataBindings.Add("Text", dt, "RecipeName");
             txtCuisineName.DataBindings.Add("Text", dt, "CuisineName");
@@ -20,6 +20,8 @@ namespace RecipeWinForms
             txtPublishDate.DataBindings.Add("Text", dt, "PublishDate");
             txtArchivedDate.DataBindings.Add("Text", dt, "ArchivedDate");
             txtRecipeStatus.DataBindings.Add("Text", dt, "RecipeStatus");
+            txtStaffFirstName.DataBindings.Add("Text", dt, "FirstName");
+            txtStaffLastName.DataBindings.Add("Text", dt, "LastName");
             this.Show();
         }
     }
