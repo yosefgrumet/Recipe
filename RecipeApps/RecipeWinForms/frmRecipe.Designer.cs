@@ -81,7 +81,7 @@
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tblMain.Size = new Size(801, 416);
+            tblMain.Size = new Size(797, 404);
             tblMain.TabIndex = 0;
             // 
             // lblRecipeName
@@ -99,7 +99,7 @@
             txtRecipeName.Dock = DockStyle.Fill;
             txtRecipeName.Location = new Point(161, 3);
             txtRecipeName.Name = "txtRecipeName";
-            txtRecipeName.Size = new Size(637, 34);
+            txtRecipeName.Size = new Size(633, 34);
             txtRecipeName.TabIndex = 7;
             // 
             // lblRecipeStatus
@@ -117,7 +117,7 @@
             txtRecipeStatus.Dock = DockStyle.Fill;
             txtRecipeStatus.Location = new Point(161, 243);
             txtRecipeStatus.Name = "txtRecipeStatus";
-            txtRecipeStatus.Size = new Size(637, 34);
+            txtRecipeStatus.Size = new Size(633, 34);
             txtRecipeStatus.TabIndex = 12;
             // 
             // lblArchivedDate
@@ -135,7 +135,7 @@
             txtArchivedDate.Dock = DockStyle.Fill;
             txtArchivedDate.Location = new Point(161, 203);
             txtArchivedDate.Name = "txtArchivedDate";
-            txtArchivedDate.Size = new Size(637, 34);
+            txtArchivedDate.Size = new Size(633, 34);
             txtArchivedDate.TabIndex = 11;
             // 
             // txtPublishDate
@@ -143,7 +143,7 @@
             txtPublishDate.Dock = DockStyle.Fill;
             txtPublishDate.Location = new Point(161, 163);
             txtPublishDate.Name = "txtPublishDate";
-            txtPublishDate.Size = new Size(637, 34);
+            txtPublishDate.Size = new Size(633, 34);
             txtPublishDate.TabIndex = 10;
             // 
             // lblPublishDate
@@ -161,7 +161,7 @@
             txtDraftDate.Dock = DockStyle.Fill;
             txtDraftDate.Location = new Point(161, 123);
             txtDraftDate.Name = "txtDraftDate";
-            txtDraftDate.Size = new Size(637, 34);
+            txtDraftDate.Size = new Size(633, 34);
             txtDraftDate.TabIndex = 9;
             // 
             // lblDraftDate
@@ -189,7 +189,7 @@
             txtCalories.Dock = DockStyle.Fill;
             txtCalories.Location = new Point(161, 83);
             txtCalories.Name = "txtCalories";
-            txtCalories.Size = new Size(637, 34);
+            txtCalories.Size = new Size(633, 34);
             txtCalories.TabIndex = 8;
             // 
             // lblCuisine
@@ -207,14 +207,13 @@
             txtCuisineName.Dock = DockStyle.Fill;
             txtCuisineName.Location = new Point(161, 43);
             txtCuisineName.Name = "txtCuisineName";
-            txtCuisineName.Size = new Size(637, 34);
+            txtCuisineName.Size = new Size(633, 34);
             txtCuisineName.TabIndex = 15;
             // 
             // lblStaffUserName
             // 
-            lblStaffUserName.Anchor = AnchorStyles.Left;
             lblStaffUserName.AutoSize = true;
-            lblStaffUserName.Location = new Point(3, 334);
+            lblStaffUserName.Location = new Point(3, 280);
             lblStaffUserName.Name = "lblStaffUserName";
             lblStaffUserName.Size = new Size(152, 28);
             lblStaffUserName.TabIndex = 16;
@@ -225,14 +224,14 @@
             txtStaffUserName.Dock = DockStyle.Fill;
             txtStaffUserName.Location = new Point(161, 283);
             txtStaffUserName.Name = "txtStaffUserName";
-            txtStaffUserName.Size = new Size(637, 34);
+            txtStaffUserName.Size = new Size(633, 34);
             txtStaffUserName.TabIndex = 17;
             // 
             // frmRecipe
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(801, 416);
+            ClientSize = new Size(797, 404);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
