@@ -34,6 +34,7 @@
             txtRecipe = new TextBox();
             btnSearch = new Button();
             gRecipe = new DataGridView();
+            btnNew = new Button();
             tblmain.SuspendLayout();
             tblsearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gRecipe).BeginInit();
@@ -56,13 +57,15 @@
             // 
             // tblsearch
             // 
-            tblsearch.ColumnCount = 3;
+            tblsearch.ColumnCount = 4;
+            tblsearch.ColumnStyles.Add(new ColumnStyle());
             tblsearch.ColumnStyles.Add(new ColumnStyle());
             tblsearch.ColumnStyles.Add(new ColumnStyle());
             tblsearch.ColumnStyles.Add(new ColumnStyle());
             tblsearch.Controls.Add(lblRecipe, 0, 0);
             tblsearch.Controls.Add(txtRecipe, 1, 0);
             tblsearch.Controls.Add(btnSearch, 2, 0);
+            tblsearch.Controls.Add(btnNew, 3, 0);
             tblsearch.Dock = DockStyle.Fill;
             tblsearch.Location = new Point(3, 3);
             tblsearch.Name = "tblsearch";
@@ -114,6 +117,18 @@
             gRecipe.Size = new Size(794, 383);
             gRecipe.TabIndex = 1;
             // 
+            // btnNew
+            // 
+            btnNew.Anchor = AnchorStyles.Left;
+            btnNew.AutoSize = true;
+            btnNew.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNew.Location = new Point(309, 8);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(94, 38);
+            btnNew.TabIndex = 3;
+            btnNew.Text = "&New";
+            btnNew.UseVisualStyleBackColor = true;
+            // 
             // frmSearch
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -137,5 +152,6 @@
         private TextBox txtRecipe;
         private Button btnSearch;
         private DataGridView gRecipe;
+        private Button btnNew;
     }
 }
