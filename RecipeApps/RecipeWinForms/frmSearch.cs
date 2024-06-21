@@ -2,6 +2,7 @@
 using System.Data;
 using CPUWindowsFormFramework;
 using System.Diagnostics;
+using RecipeSystem;
 
 namespace RecipeWinForms
 {
@@ -16,11 +17,9 @@ namespace RecipeWinForms
             WindowsFormsUtility.FormatGridForSearchResults(gRecipe);
         }
 
-        private void SearchForRecipe(string Recipe)
+        private void SearchForRecipe(string RecipeString)
         {
-            string sql = "select r.RecipeID, r.RecipeName from Recipe r where r.RecipeName like '%" + Recipe + "%'";
-            Debug.Print(sql);
-            DataTable dt = SQLUtility.GetDataTable(sql);
+            DataTable dt = Recipe.SearchRecipes(RecipeString);
             gRecipe.DataSource = dt;
             gRecipe.Columns["RecipeID"].Visible = false;
         }

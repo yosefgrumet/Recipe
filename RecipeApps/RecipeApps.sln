@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPUFramework", "..\..\CPUFr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPUWindowsFormFramework", "..\..\CPUWindowsFormFramework\CPUWindowsFormFramework.csproj", "{0F4B71AB-FCCB-4652-B07C-CD1414BBFEF0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeSystem", "RecpieSystem\RecipeSystem.csproj", "{2DAE23B5-2E85-4A2D-93F2-E088E75BA861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTest", "RecipeTest\RecipeTest.csproj", "{C211ADF3-95F0-43C5-9B97-A557089234D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0F4B71AB-FCCB-4652-B07C-CD1414BBFEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4B71AB-FCCB-4652-B07C-CD1414BBFEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4B71AB-FCCB-4652-B07C-CD1414BBFEF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DAE23B5-2E85-4A2D-93F2-E088E75BA861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DAE23B5-2E85-4A2D-93F2-E088E75BA861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DAE23B5-2E85-4A2D-93F2-E088E75BA861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DAE23B5-2E85-4A2D-93F2-E088E75BA861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C211ADF3-95F0-43C5-9B97-A557089234D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C211ADF3-95F0-43C5-9B97-A557089234D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C211ADF3-95F0-43C5-9B97-A557089234D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C211ADF3-95F0-43C5-9B97-A557089234D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
