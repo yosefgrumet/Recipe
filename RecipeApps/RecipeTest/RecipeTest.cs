@@ -32,17 +32,23 @@ namespace RecipeTest
         [Test]
         public void DeleteRecipe()
         {
-            DataTable dt = SQLUtility.GetDataTable("SELECT TOP 1 recipeid FROM recipe ORDER BY recipeid DESC");
-            int recipeid = 0;
+            string checkrelated = "SELECT r.RecipeID FROM Recipe r LEFT JOIN RecipeIngredient ri ON ri.RecipeID = r.RecipeID WHERE ri.RecipeIngredientID IS NULL";
+            DataTable dt = SQLUtility.GetDataTable(checkrelated); //add here a where clause that limits the results to the type that yuou want...
+            //int recipeid = 0;
             if (dt.Rows.Count > 0)
             {
-                recipeid = (int)dt.Rows[0]["recipeid"];
+                int recipeid = (int)dt.Rows[0]["recipeid"];
+                TestContext.WriteLine("Ensure that app can delete RecipeID: " + recipeid);
+
+                Recipe.delete(dt);
+                DataTable dtafterdelete = SQLUtility.GetDataTable("select * from recipe where recipeid = " + recipeid);
+                Assert.IsTrue(dtafterdelete.Rows.Count == 0, "record with recipeid " + recipeid + " exists in DB");
+                TestContext.WriteLine("record with recipeid " + recipeid + " does not exists in DB");
             }
-            TestContext.WriteLine("ensure that app can delete " + recipeid);
-            Recipe.delete(dt);
-            DataTable dtafterdelete = SQLUtility.GetDataTable("select * from recipe where recipeid = " + recipeid);
-            Assert.IsTrue(dtafterdelete.Rows.Count == 0, "record with recipeid " + recipeid + " exists in DB");
-            TestContext.WriteLine("record with recipeid " + recipeid + " does not exists in DB");
+            else
+            {
+                TestContext.WriteLine("No recipes found without ingredients.");
+            }
         }
         [Test]
         public void InsertNewRecipe()
@@ -54,20 +60,20 @@ namespace RecipeTest
             Assume.That(Staffid > 0, "Can't run test no staff in the DB");
             int Cuisineid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 cuisineid from cuisine");
             Assume.That(Cuisineid > 0, "Can't run test no cuisine in the DB");
-            
-            //DateTime draftdate = DateTime.Now;
 
-            r["RecipeName"] = "Hot Dog" + DateTime.Now.ToString();
+            string uniqueRecipeName = "Hot Dog " + DateTime.Now.ToString();
+
+            r["RecipeName"] = uniqueRecipeName;
             r["Calories"] = 100;
-            r["DraftDate"] = DateTime.Now.ToString();
+            r["DraftDate"] = DateTime.Now;
             r["StaffID"] = Staffid;
             r["CuisineID"] = Cuisineid;
 
             Recipe.Save(dt);
 
-            int Newrecipeid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 recipeid from recipe order by recipeid desc");
-            Assert.IsTrue(Newrecipeid > 0,"The new recipe was not inserted");
-            TestContext.WriteLine("Inserted new recipe with ID: " + Newrecipeid);
+            int Newrecipeid = SQLUtility.GetFirstColumnFirstRowValue("select recipeid from recipe where recipename = '" + uniqueRecipeName + "'");
+            Assert.IsTrue(Newrecipeid > 0, "The new recipe was not inserted");
+            TestContext.WriteLine("Inserted new recipe with Recipe Name: " + uniqueRecipeName);
         }
 
 
