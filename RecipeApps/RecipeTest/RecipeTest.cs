@@ -90,6 +90,22 @@ namespace RecipeTest
             TestContext.WriteLine("Loaded recipe (" + loadedid + ")");
         }
 
+        [Test]
+        public void SearchRecipe()
+        {
+            string criteria = "a";
+            int num = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from recipe where recipename like '%" + criteria + "%'");
+            Assume.That(num > 0, "There are no recipes that match the search for " + num);
+            TestContext.WriteLine(num + " recipes that match " + criteria);
+            TestContext.WriteLine("Ensure that recipes search reurns " + num + " rows");
+
+            DataTable dt = Recipe.SearchRecipes(criteria);
+            int results = dt.Rows.Count;
+
+            Assert.IsTrue(results == num, "Results of recipe search does not match number of recipes, " + results + " <> " + num);
+            TestContext.WriteLine("Number of rows returned by recipe search is " + results);
+        }
+
         private int GetExistingRecipeId()
         {
             return SQLUtility.GetFirstColumnFirstRowValue("select top 1 recipeid from recipe");
