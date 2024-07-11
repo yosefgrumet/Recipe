@@ -1,10 +1,4 @@
-﻿using CPUFramework;
-using System.Data;
-using System.Diagnostics;
-using CPUWindowsFormFramework;
-using RecipeSystem;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmRecipe : Form
     {
@@ -40,12 +34,37 @@ namespace RecipeWinForms
 
         private void Save()
         {
-            Recipe.Save(dtrecipe);
+            Application.UseWaitCursor = true;
+            try
+            {
+                Recipe.Save(dtrecipe);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Recipe");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
         }
-            private void Delete()
+
+        private void Delete()
         {
-            Recipe.delete(dtrecipe);
-            this.Close();
+            Application.UseWaitCursor = true;
+            try
+            {
+                Recipe.delete(dtrecipe);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Recipe");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
         }
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
