@@ -62,7 +62,7 @@ create table dbo.Recipe(
         constraint u_Recipe_Name unique,
     Calories int not null 
         constraint ck_Recipe_Calories_must_be_greater_or_equal_to_zero check(Calories >= 0),
-    DraftDate DATETIME
+    DraftDate DATETIME not null default getdate()
         constraint ck_Recipe_Draft_Date_can_not_be_in_the_futue CHECK(DraftDate <= GETDATE()),
     PublishDate DATETIME
         constraint ck_Recipe_Published_Date_can_not_be_in_the_futue CHECK(PublishDate <= GETDATE()),
