@@ -92,6 +92,28 @@ namespace RecipeTest
         }
 
         [Test]
+        public void DeleteRecipeArchivedOrCurrentlyDrafted()
+        {
+            string sql = @"
+        SELECT TOP 1 r.recipeid, r.recipename 
+        FROM recipe r
+        WHERE r.ArchivedDate IS NOT NULL
+        AND DATEDIFF(DAY, r.ArchivedDate, GETDATE()) >= 30
+        AND r.Recipestatus <> 'Draft'";
+            DataTable dt = SQLUtility.GetDataTable(sql);
+            if (dt.Rows.Count > 0)
+            {
+                int recipeid = (int)dt.Rows[0]["recipeid"];
+                Exception ex = Assert.Throws<Exception>(() => Recipe.delete(dt));
+                TestContext.WriteLine(ex.Message);
+            }
+            else
+            {
+                TestContext.WriteLine("No valid recipes found for deletion.");
+            }
+        }
+
+        [Test]
         public void DeleteRecipeWithRecipeIngredient()
         {
             string checkrelated = "SELECT top 1 r.RecipeID, r.recipename, r.calories FROM Recipe r JOIN RecipeIngredient ri ON ri.RecipeID = r.RecipeID WHERE ri.RecipeIngredientID IS not NULL";
