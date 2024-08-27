@@ -5,14 +5,19 @@ create or alter procedure dbo.RecipeDelete(
 as
 begin
 	declare @return int = 0
-	if exists(select * from Recipe r where r.RecipeId = @RecipeId 
-		AND r.ArchivedDate IS NOT NULL
-        AND DATEDIFF(DAY, r.ArchivedDate, GETDATE()) >= 30
-		Or r.Recipestatus <> 'Draft')
+	 IF EXISTS (
+        SELECT 1
+        FROM Recipe r
+        WHERE r.RecipeId = @RecipeId
+        AND NOT (
+            (r.ArchivedDate IS NOT NULL AND DATEDIFF(DAY, r.ArchivedDate, GETDATE()) > 30)
+            OR r.RecipeStatus = 'Draft'
+        )
+    )
 	begin
-		select @return = 1,
-		@Message = 'Cannot delete Recipe that is archived for more than 30 days or is currently drafted.'
-		goto finished
+		SET @return = 1;
+        SET @Message = 'Cannot delete Recipe. It must be archived for more than 30 days or be in draft state.';
+        GOTO finished;
 	end
 	begin try
 		begin tran
