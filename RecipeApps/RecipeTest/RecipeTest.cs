@@ -8,7 +8,7 @@ namespace RecipeTest
         [SetUp]
         public void Setup()
         {
-            DBManager.SetConnectionString("Server=.\\SQLExpress;Database=HeartyHearthDB;Trusted_Connection=true");
+            DBManager.SetConnectionString("Server=tcp:ygrumet.database.windows.net,1433;Initial Catalog=HeartyHearthDB;Persist Security Info=False;User ID=cpuadmin;Password=098BGtr!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         [Test]
@@ -92,14 +92,17 @@ namespace RecipeTest
         }
 
         [Test]
-        public void CanDeleteRecipeArchivedOver30DaysOrDraft()
+        public void DeleteRecipeArchivedOrCurrentlyDrafted()
         {
             string sql = @"
-            SELECT top 1 r.recipeid
+            SELECT TOP 1 r.RecipeID, r.RecipeName
             FROM Recipe r
-            WHERE (r.ArchivedDate IS NOT NULL 
-            AND DATEDIFF(DAY, r.ArchivedDate, GETDATE()) > 30)
-            OR r.RecipeStatus = 'Draft'";
+            LEFT JOIN MealCourseRecipe mcr ON mcr.RecipeID = r.RecipeID
+            WHERE mcr.MealCourseRecipeID IS NULL
+            AND (
+                (DATEDIFF(DAY, r.ArchivedDate, GETDATE()) <= 30)
+                OR r.RecipeStatus = 'Published'
+            )";
             DataTable dt = SQLUtility.GetDataTable(sql);
             if (dt.Rows.Count > 0)
             {

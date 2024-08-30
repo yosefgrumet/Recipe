@@ -9,9 +9,9 @@ begin
         SELECT 1
         FROM Recipe r
         WHERE r.RecipeId = @RecipeId
-        AND NOT (
-            (r.ArchivedDate IS NOT NULL AND DATEDIFF(DAY, r.ArchivedDate, GETDATE()) > 30)
-            OR r.RecipeStatus = 'Draft'
+        AND (
+            (DATEDIFF(DAY, r.ArchivedDate, GETDATE()) <= 30 AND r.ArchivedDate IS NOT NULL)
+            OR r.RecipeStatus = 'Published'
         )
     )
 	begin
