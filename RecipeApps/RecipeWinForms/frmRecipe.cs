@@ -2,7 +2,8 @@
 {
     public partial class frmRecipe : Form
     {
-        DataTable dtrecipe;
+        DataTable dtrecipe = new DataTable();
+        BindingSource bindsource = new BindingSource();
         public frmRecipe()
         {
             InitializeComponent();
@@ -15,20 +16,26 @@
         public void Showform(int RecipeId)
         {
             dtrecipe = Recipe.Load(RecipeId);
+            bindsource.DataSource = dtrecipe;
             if (RecipeId == 0)
             {
                 dtrecipe.Rows.Add();
             }
             DataTable dtcuisines = Recipe.GetCuisineList();
-            WindowsFormsUtility.SetControlBinding(txtRecipeName, dtrecipe);
+            WindowsFormsUtility.SetControlBinding(txtRecipeName, bindsource);
             WindowsFormsUtility.SetListBinding(lstCuisineName, dtcuisines, dtrecipe, "Cuisine");
-            WindowsFormsUtility.SetControlBinding(txtCalories, dtrecipe);
-            WindowsFormsUtility.SetControlBinding(dtpDraftDate, dtrecipe);
-            WindowsFormsUtility.SetControlBinding(txtPublishDate, dtrecipe);
-            WindowsFormsUtility.SetControlBinding(txtArchivedDate, dtrecipe);
-            WindowsFormsUtility.SetControlBinding(txtRecipeStatus, dtrecipe);
+            WindowsFormsUtility.SetControlBinding(txtCalories, bindsource);
+            WindowsFormsUtility.SetControlBinding(dtpDraftDate, bindsource);
+            WindowsFormsUtility.SetControlBinding(txtPublishDate, bindsource);
+            WindowsFormsUtility.SetControlBinding(txtArchivedDate, bindsource);
+            WindowsFormsUtility.SetControlBinding(txtRecipeStatus, bindsource);
             DataTable dtstaffusername = Recipe.GetStaffList();
             WindowsFormsUtility.SetListBinding(lstUserName, dtstaffusername, dtrecipe, "Staff");
+
+            txtPublishDate.ReadOnly = true;
+            txtArchivedDate.ReadOnly = true;
+            txtRecipeStatus.ReadOnly = true;
+
             this.Show();
         }
 
