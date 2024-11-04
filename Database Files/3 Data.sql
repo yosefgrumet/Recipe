@@ -305,6 +305,8 @@ GO
 
 ;
 with x as ( select MealName = 'Breakfast bash', FirstName=  'Efraim', LastName= 'Harari'
+union select 'Lunch special', 'Victoria', 'Dwek'
+union select 'Super Supper', 'Miriam', 'Pascal'
 )
 insert Meal(MealName, StaffID, Active, DateCreated) 
 select x.MealName, s.StaffID, 1, '04-01-2022'
@@ -319,6 +321,8 @@ go
 with x as (select MealName = 'Breakfast bash', FirstName=  'Victoria', LastName= 'Dwek',  Course = 'Main course', Recipe = 'Cheese Bread'
 union select 'Breakfast bash', 'Victoria', 'Dwek', 'Main course',  'Butter Muffins'
 union select 'Breakfast bash', 'Victoria', 'Dwek', 'Appetizer', 'Apple Yogurt Smoothie' 
+union select 'Lunch special', 'Victoria', 'Dwek', 'Appetizer', 'Cheese Bread'
+union select 'Super Supper', 'Miriam', 'Pascal', 'Dessert', 'Chocolate Chip Cookies'
 )
 insert MealCourse(MealID, CourseID)
 SELECT distinct m.MealID, c.CourseID
@@ -334,6 +338,8 @@ GO
 with x as (select MealName = 'Breakfast bash', FirstName=  'Victoria', LastName= 'Dwek',  Course = 'Main course', Recipe = 'Cheese Bread', MainDish = 1
 union select 'Breakfast bash', 'Victoria', 'Dwek', 'Main course',  'Butter Muffins', 0
 union select 'Breakfast bash', 'Victoria', 'Dwek', 'Appetizer', 'Apple Yogurt Smoothie' , 0
+union select 'Lunch special', 'Victoria', 'Dwek', 'Appetizer', 'Cheese Bread', 1
+union select 'Super Supper', 'Miriam', 'Pascal', 'Dessert', 'Chocolate Chip Cookies', 0
 )
 insert MealCourseRecipe (MealCourseID, RecipeID, MainDish)
 select mc.MealCourseID, r.RecipeID, x.MainDish
